@@ -3,12 +3,14 @@
   "version": "0.1.8",
   "description": "Enable blurring the back of your transparent BrowserWindow using this simple module.",
   "main": "index.js",
+  "_devDependencies": {
+    "coffeelint": "^1.16.0",
+    "electron": "^6.0.2"
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "coffee-script": "^1.12.6",
-    "coffeelint": "^1.16.0",
-    "electron": "^6.0.2",
     "mocha": "^3.4.1",
     "node-gyp": "^5.0.3",
     "node-pre-gyp": "^0.13.0",
@@ -21,11 +23,11 @@
   "scripts": {
     "test-spectron": "mocha --compilers coffee:coffee-script/register ./spec/vibrancy-spec.coffee",
     "test-module": "mocha --compilers coffee:coffee-script/register ./spec/module-spec.coffee",
-    "run-test-app": "./node_modules/.bin/electron ./spec/app",
+    "run-test-app": "../../../Electron ./spec/app",
     "lint-cpp": "python scripts/lint.py",
     "lint-coffee": "coffeelint spec",
-    "rebuild": "node-gyp rebuild --runtime=electron --debug --dist-url=https://npm.taobao.org/mirrors/atom-shell",
-    "build": "node-gyp build --target=1.6.8 --runtime=electron --arch=x64 --debug --dist-url=https://npm.taobao.org/mirrors/atom-shell",
+    "rebuild": "HOME=~/.electron-gyp node-gyp rebuild --target=7.1.1 --runtime=electron --dist-url=https://electronjs.org/headers",
+    "build": "HOME=~/.electron-gyp node-gyp build --target=7.1.1 --runtime=electron --arch=x64 --dist-url=https://electronjs.org/headers",
     "nrebuild": "node-gyp rebuild --debug --arch=x64 --verbose",
     "nbuild": "node-gyp build --debug",
     "conf": "node-gyp configure --arch=x64",
