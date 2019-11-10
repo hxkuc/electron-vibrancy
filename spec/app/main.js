@@ -11,7 +11,7 @@ app.on('ready', function () {
     height: 900,
     minHeight: 100,
     minWidth: 100,
-    transparent: true,    
+    transparent: true,
     frame: false,
     show: false
   })
