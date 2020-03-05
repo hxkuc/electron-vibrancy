@@ -69,21 +69,23 @@ namespace Vibrancy {
     }
 
     NAN_METHOD(Vibrancy::SetVibrancy) {
-        v8::Local<v8::Object> toggleStateObj =
-            info[0].As<v8::Object>();
+        bool toggleState = info[1]->BooleanValue(v8::Isolate::GetCurrent());
+
+        // v8::Local<v8::Object> toggleStateObj = info[0].As<v8::Object>();
+
         v8::Local<v8::Object> handleBuffer =
             info[1].As<v8::Object>();
 
         v8::Isolate* isolate = info.GetIsolate();
         v8::HandleScope scope(isolate);
 
-        if (toggleStateObj->IsNull())
-            return;
+        // if (toggleStateObj->IsNull()) return;
 
         if (handleBuffer->IsNull())
             return;
 
-        bool toggleState = toggleStateObj->BooleanValue(Nan::GetCurrentContext()).FromJust();
+        // bool toggleState = toggleStateObj->BooleanValue(Nan::GetCurrentContext()).FromJust();
+
 
         char* bufferData = node::Buffer::Data(handleBuffer);
 
